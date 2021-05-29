@@ -9,19 +9,19 @@ import SwiftUI
 
 struct NewTweetsView: View {
     @Binding var isPresented:Bool
+    @State var captionText:String = ""
     var body: some View {
         NavigationView {
             VStack {
-                HStack{
+                HStack(alignment: .top) {
                     Image("batman")
                         .resizable()
                         .scaledToFill()
                         .clipped()
                         .frame(width:64,height:64)
                         .cornerRadius(64/2)
-                    Text("What's Happening")
-                        .foregroundColor(.gray)
-                    Spacer()
+                    TextArea("What's Happening?", text: $captionText)
+                    Spacer() 
                 }.padding()
                 .navigationBarItems(leading:Button(action: {
                     isPresented.toggle()
